@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
+// authenticate
 class Jokes extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +14,7 @@ class Jokes extends Component {
     render() {
         return (
             <div>
-
+jokes!
             </div>
         )
     }
