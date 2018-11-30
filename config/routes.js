@@ -1,7 +1,7 @@
 const axios = require('axios');
-
-const { authenticate } = require('./middlewares');
-
+const bcrypt = require('bcryptjs');
+const { authenticate , generateToken } = require('./middlewares');
+const db = require('../database/dbConfig.js');
 module.exports = server => {
   server.post('/api/register', register);
   server.post('/api/login', login);
@@ -9,7 +9,18 @@ module.exports = server => {
 };
 
 function register(req, res) {
-  // implement user registration
+  const creds = req.body;
+  const hash = bcrypt.hashSync(creds.password, 14);
+  creds.password = hash;
+  db('users')
+    .insert(creds)
+    .then(ids => {
+      console.log(creds);
+      res.status(201).json(creds.username);
+    })
+    .catch(err => {
+      res.status(500).json({message: 'unable to join'})
+    });
 }
 
 function login(req, res) {
