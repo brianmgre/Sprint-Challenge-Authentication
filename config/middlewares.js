@@ -27,7 +27,7 @@ function authenticate(req, res, next) {
   }
 };
 
-function generateToken(user){
+function generateToken(user) {
   const jwtPayload = {
     subject: user.id,
     hello: 'hello',

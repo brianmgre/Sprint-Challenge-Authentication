@@ -1,6 +1,6 @@
 const axios = require('axios');
 const bcrypt = require('bcryptjs');
-const { authenticate , generateToken } = require('./middlewares');
+const { authenticate, generateToken } = require('./middlewares');
 const db = require('../database/dbConfig.js');
 module.exports = server => {
   server.post('/api/register', register);
@@ -19,21 +19,21 @@ function register(req, res) {
       res.status(201).json(creds.username);
     })
     .catch(err => {
-      res.status(500).json({message: 'unable to join'})
+      res.status(500).json({ message: 'unable to join' })
     });
 }
 
 function login(req, res) {
   const creds = req.body;
   db('users')
-    .where({username: creds.username})
+    .where({ username: creds.username })
     .first()
     .then(user => {
-      if (user && bcrypt.compareSync(creds.password, user.password)){
+      if (user && bcrypt.compareSync(creds.password, user.password)) {
         const token = generateToken(user);
         res.status(201).json(token)
-      }else {
-        res.status(401).json({message: 'nope'})
+      } else {
+        res.status(401).json({ message: 'nope' })
       }
     })
     .catch(err => {
