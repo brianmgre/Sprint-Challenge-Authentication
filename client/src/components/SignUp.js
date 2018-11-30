@@ -20,7 +20,7 @@ class SignUp extends Component {
 
     inputHandler = (event) => {
         const { name, value } = event.target;
-        this.setState({ user: { ... this.state.user, [name]: value } });
+        this.setState({ user: { ...this.state.user, [name]: value } });
     };
 
     submitHandler = (event) => {
