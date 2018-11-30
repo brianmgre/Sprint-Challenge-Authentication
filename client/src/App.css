@@ -43,3 +43,9 @@ nav{
 nav a{
   margin: 10px;
 }
+
+.jokes{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

@@ -63,11 +63,11 @@ class Jokes extends Component {
             <div>
                 <button onClick={this.submitHandler}>Sign Out</button>
                 <h2>Jokes</h2>
-                <div>
+                <div className='jokes'> 
                     {this.state.jokes.map(joke =>
                         <div key={joke.id}>
-                            {joke.setup}
-                            {joke.punchline}
+                           <h3> {joke.setup}</h3>
+                           <h6> {joke.punchline}</h6>
                         </div>
                     )}
                 </div>
