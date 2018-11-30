@@ -39,7 +39,7 @@ class Jokes extends Component {
         }
     };
 
-    componentDidMount(){
+    componentDidMount() {
         this.authenticate();
     };
 
@@ -63,11 +63,11 @@ class Jokes extends Component {
             <div>
                 <button onClick={this.submitHandler}>Sign Out</button>
                 <h2>Jokes</h2>
-                <div className='jokes'> 
+                <div className='jokes'>
                     {this.state.jokes.map(joke =>
                         <div key={joke.id}>
-                           <h3> {joke.setup}</h3>
-                           <h6> {joke.punchline}</h6>
+                            <h3> {joke.setup}</h3>
+                            <h6> {joke.punchline}</h6>
                         </div>
                     )}
                 </div>
